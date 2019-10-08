@@ -4,7 +4,7 @@ _unit-tests: &unit-tests
   sudo: required
   services: docker
   script:
-    - ./mnnw test -B
+    - ./mvnw test -B
 
 ### Futur Job pour les tests fonctionnels
 #_functional-tests: &functional-tests
