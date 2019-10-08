@@ -1,4 +1,4 @@
-package com.cashmanager;
+package com.cashmanager.cashmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,5 +10,4 @@ public class CashManagerApplication {
 		SpringApplication.run(CashManagerApplication.class, args);
 	}
 
-	
 }
