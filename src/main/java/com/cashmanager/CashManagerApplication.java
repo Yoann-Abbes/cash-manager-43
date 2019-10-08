@@ -1,4 +1,4 @@
-package com.cashmanager.cashmanager;
+package com.cashmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

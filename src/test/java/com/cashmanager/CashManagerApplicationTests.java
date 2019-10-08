@@ -1,4 +1,4 @@
-package com.cashmanager.cashmanager;
+package com.cashmanager;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
