@@ -1,0 +1,41 @@
+### Job pour les tests unitaires
+_unit-tests: &unit-tests
+  os: linux
+  sudo: required
+  services: docker
+  script:
+    - ./mvnw test -B
+
+### Futur Job pour les tests fonctionnels
+#_functional-tests: &functional-tests
+#  os: linux
+#  sudo: required
+#  services: docker
+#  script:
+#    - commande pour lancer les tests avec squach
+
+
+### Job de deploy : Pour l'instant ca met a jour l'image docker automatiquement si les tests reussissent et si on push sur master
+_app-deploy: &app-deploy
+  stage: Deployments
+  language: minimal
+  services: docker
+  if: type=push AND branch=master
+  script:
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - docker build . -t $IMAGE_NAME
+    - docker push $IMAGE_NAME:latest
+
+jobs:
+  include:
+    - <<: *unit-tests
+      stage: Unit tests
+      name: Unit Tests
+
+#    - <<: *functional-tests
+#      stage: functional tests
+#      name: functional Tests
+
+    - <<: *app-deploy
+      stage: Deployments
+      name: Deployment
