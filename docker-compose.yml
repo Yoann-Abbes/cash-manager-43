@@ -1,25 +1,31 @@
 version: '3'
 services:
-  cash-manager:
+  cash_manager:
+    container_name: cash_manager
     build:
       context: .
+    restart: always
     ports:
       - "8080:8080"
-    networks:
-      - cash-manager
     depends_on:
-      - mysqldb
+      - "mysqldb"
+    volumes:
+      - .:/app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/cash_manager
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: cashmanager
+    expose:
+      - "8080"
+    working_dir: /app
+    command: mvn clean spring-boot:run
 
   mysqldb:
+    container_name: mysqldb
     image: mysql:8
     restart: always
-    volumes:
-        - ./mysql-dump:/docker-entrypoint-initdb.d
-    networks:
-      - cash-manager
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=cashmanager
       - MYSQL_DATABASE=cash_manager
-
-networks:
-  cash-manager:
