@@ -1,8 +1,32 @@
 version: '3'
 services:
-  app:
+  cash_manager:
+    container_name: cash_manager
+    image: maven:3.5-jdk-8
     restart: always
-    image: alexis44119/springboot-maven:springboot_image
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "mysqldb"
+    volumes:
+      - .:/app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/cash_manager
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: cashmanager
     expose:
-      - "8082"
+      - "8080"
+    working_dir: /app
     command: mvn clean spring-boot:run
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:8
+    restart: always
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=cashmanager
+      - MYSQL_DATABASE=cash_manager
