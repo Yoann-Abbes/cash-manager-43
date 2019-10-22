@@ -140,6 +140,8 @@ ALTER TABLE `cash_manager`.`Panier`
 
 INSERT INTO `cash_manager`.`Produit` (Name, Prix) VALUES ("Pain", 1);
 INSERT INTO `cash_manager`.`Produit` (Name, Prix) VALUES ("Kebab", 5);
+INSERT INTO `cash_manager`.`Client` (nom, prenom) VALUES ("John", "Doe");
+INSERT INTO `cash_manager`.`Client` (nom, prenom) VALUES ("Morgan", "Freeman");
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
