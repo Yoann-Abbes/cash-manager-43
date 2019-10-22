@@ -128,14 +128,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/users/3",
+							"raw": "http://localhost:8080/clients/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"users",
+								"clients",
 								"3"
 							]
 						}
@@ -193,6 +193,29 @@
 				},
 				{
 					"name": "Get by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Morgan\");",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Freeman\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -201,7 +224,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"2"
+							]
 						}
 					},
 					"response": []
