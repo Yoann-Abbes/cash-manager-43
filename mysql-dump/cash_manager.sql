@@ -44,7 +44,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cash_manager`.`produit` (
   `id_produit` INT AUTO_INCREMENT,
-  `Name` TEXT,
+  `name` TEXT,
   `image` BLOB,
   `prix` DOUBLE,
   PRIMARY KEY (`id_produit`))
