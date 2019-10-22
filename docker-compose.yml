@@ -2,7 +2,7 @@ version: '3'
 services:
   cash_manager:
     container_name: cash_manager
-    image: maven:3.5-jdk-8
+    image: maven:3.5-jdk-9
     restart: always
     ports:
       - "8080:8080"
