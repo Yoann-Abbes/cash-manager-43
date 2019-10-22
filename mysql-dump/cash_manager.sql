@@ -20,34 +20,34 @@ USE `cash_manager` ;
 -- -----------------------------------------------------
 -- Table `cash_manager`.`Panier`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cash_manager`.`Panier` (
-  `IdPanier` INT NOT NULL AUTO_INCREMENT,
-  `IdProduit` INT NOT NULL,
-  `idClient` INT NOT NULL,
-  PRIMARY KEY (`IdPanier`))
+CREATE TABLE IF NOT EXISTS `cash_manager`.`panier` (
+  `id_panier` INT AUTO_INCREMENT,
+  `id_produit` INT,
+  `id_client` INT,
+  PRIMARY KEY (`id_panier`))
 
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `cash_manager`.`Client`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cash_manager`.`Client` (
-  `idClient` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NULL,
-  `prenom` VARCHAR(45) NULL,
-  PRIMARY KEY (`idClient`))
+CREATE TABLE IF NOT EXISTS `cash_manager`.`client` (
+  `id_client` INT AUTO_INCREMENT,
+  `nom` TEXT,
+  `prenom` TEXT,
+  PRIMARY KEY (`id_client`))
 
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `cash_manager`.`Produit`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cash_manager`.`Produit` (
-  `IdProduit` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NULL,
-  `Image` BLOB NULL,
-  `Prix` DOUBLE NULL,
-  PRIMARY KEY (`IdProduit`))
+CREATE TABLE IF NOT EXISTS `cash_manager`.`produit` (
+  `id_produit` INT AUTO_INCREMENT,
+  `Name` TEXT,
+  `image` BLOB,
+  `prix` DOUBLE,
+  PRIMARY KEY (`id_produit`))
 
 ENGINE = InnoDB;
 
@@ -55,10 +55,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cash_manager`.`ModePaiement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cash_manager`.`ModePaiement` (
-  `idModePaiement` INT NOT NULL AUTO_INCREMENT,
-  `modePaiement` VARCHAR(45) NULL,
-  PRIMARY KEY (`idModePaiement`))
+CREATE TABLE IF NOT EXISTS `cash_manager`.`mode_paiement` (
+  `id_mode_paiement` INT AUTO_INCREMENT,
+  `mode_paiement` TEXT,
+  PRIMARY KEY (`id_mode_paiement`))
 
 ENGINE = InnoDB;
 
@@ -66,82 +66,44 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cash_manager`.`Paiement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cash_manager`.`Paiement` (
-  `idPaiement` INT NOT NULL AUTO_INCREMENT,
-  `idClient` INT NULL,
-  `idModeDePaiement` INT NULL,
-  `idPanier` INT NULL,
-  PRIMARY KEY (`idPaiement`))
+CREATE TABLE IF NOT EXISTS `cash_manager`.`paiement` (
+  `id_paiement` INT AUTO_INCREMENT,
+  `id_client` INT,
+  `id_mode_paiement` INT,
+  `id_panier` INT,
+  PRIMARY KEY (`id_paiement`))
 
 ENGINE = InnoDB;
 
-ALTER TABLE `cash_manager`.`Produit`
-    ADD CONSTRAINT `Produit_FK_PANIER`
-    FOREIGN KEY (`IdProduit`)
-    REFERENCES `cash_manager`.`Panier` (`IdPanier`)
+ALTER TABLE `cash_manager`.`paiement`
+  ADD CONSTRAINT `paiment_FK_MDPAIE`
+    FOREIGN KEY (`id_paiement`)
+    REFERENCES `cash_manager`.`mode_paiement` (`id_mode_paiement`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  ADD CONSTRAINT `paiment_FK_PANIER`
+    FOREIGN KEY (`id_paiement`)
+    REFERENCES `cash_manager`.`panier` (`id_panier`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
 
-ALTER TABLE `cash_manager`.`Paiement`
-    ADD CONSTRAINT `Paiment_FK_CLIENT`
-    FOREIGN KEY (`idPaiement`)
-    REFERENCES `cash_manager`.`Client` (`idClient`)
+ALTER TABLE `cash_manager`.`panier`
+    ADD CONSTRAINT `panier_FK_PRODUIT`
+    FOREIGN KEY (`id_panier`)
+    REFERENCES `cash_manager`.`produit` (`id_produit`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Paiment_FK_MDPAIE`
-    FOREIGN KEY (`idPaiement`)
-    REFERENCES `cash_manager`.`ModePaiement` (`idModePaiement`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Paiment_FK_PANIER`
-    FOREIGN KEY (`idPaiement`)
-    REFERENCES `cash_manager`.`Panier` (`IdPanier`)
+  ADD CONSTRAINT `panier_FK_CLIENT`
+    FOREIGN KEY (`id_panier`)
+    REFERENCES `cash_manager`.`client` (`id_client`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
-
-ALTER TABLE `cash_manager`.`ModePaiement`
-    ADD CONSTRAINT `ModePaiment_FK_PAIEMENT`
-    FOREIGN KEY (`idModePaiement`)
-    REFERENCES `cash_manager`.`Paiement` (`idPaiement`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
-
-
-ALTER TABLE `cash_manager`.`Client`
-    ADD CONSTRAINT `Client_FK_PANIER`
-    FOREIGN KEY (`idClient`)
-    REFERENCES `cash_manager`.`Panier` (`IdPanier`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Client_FK_PAIEMENT`
-    FOREIGN KEY (`idClient`)
-    REFERENCES `cash_manager`.`Paiement` (`idPaiement`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
-
-ALTER TABLE `cash_manager`.`Panier`
-    ADD CONSTRAINT `Panier_FK_PRODUIT`
-    FOREIGN KEY (`IdPanier`)
-    REFERENCES `cash_manager`.`Produit` (`IdProduit`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Panier_FK_CLIENT`
-    FOREIGN KEY (`IdPanier`)
-    REFERENCES `cash_manager`.`Client` (`idClient`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Panier_FK_PAIEMENT`
-    FOREIGN KEY (`IdPanier`)
-    REFERENCES `cash_manager`.`Paiement` (`idPaiement`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
-
-INSERT INTO `cash_manager`.`Produit` (Name, Prix) VALUES ("Pain", 1);
-INSERT INTO `cash_manager`.`Produit` (Name, Prix) VALUES ("Kebab", 5);
-INSERT INTO `cash_manager`.`Client` (nom, prenom) VALUES ("John", "Doe");
-INSERT INTO `cash_manager`.`Client` (nom, prenom) VALUES ("Morgan", "Freeman");
+INSERT INTO `cash_manager`.`produit` (Name, Prix) VALUES ("Pain", 1);
+INSERT INTO `cash_manager`.`produit` (Name, Prix) VALUES ("Kebab", 5);
+INSERT INTO `cash_manager`.`client` (nom, prenom) VALUES ("John", "Doe");
+INSERT INTO `cash_manager`.`client` (nom, prenom) VALUES ("Morgan", "Freeman");
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
