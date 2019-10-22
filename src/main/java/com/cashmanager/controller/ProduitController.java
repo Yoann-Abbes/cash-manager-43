@@ -31,28 +31,28 @@ public class ProduitController {
 
 
     // Get a single produit
-    @GetMapping(value = "/produits/{id}")
-    public Produit getProduitById(@PathVariable Long produitId ) {
-        return produitRepository.findById(produitId)
-                .orElseThrow(() ->new ResourceNotFoundException("Produit", "idProduit", produitId)) ;
+    @GetMapping(value = "/produits/{idProduit}")
+    public Produit getProduitById(@PathVariable Long idProduit ) {
+        return produitRepository.findById(idProduit)
+                .orElseThrow(() ->new ResourceNotFoundException("Produit", "idProduit", idProduit)) ;
     }
 
     // Update a Produit
-    @PutMapping(value = "/produits/{id]")
-    public Produit updateProduit(@PathVariable Long produitId,
+    @PutMapping(value = "/produits/{idProduit}")
+    public Produit updateProduit(@PathVariable Long idProduit,
                                  @Valid @RequestBody Produit produitDetails) {
-        Produit produit = produitRepository.findById(produitId)
-                .orElseThrow(() -> new ResourceNotFoundException("Produit", "idProduit", produitId));
+        Produit produit = produitRepository.findById(idProduit)
+                .orElseThrow(() -> new ResourceNotFoundException("Produit", "idProduit", idProduit));
         produit.setName(produitDetails.getName());
         produit.setPrix(produitDetails.getPrix());
         Produit updatedProduit = produitRepository.save(produit);
         return updatedProduit;
     }
 
-    @DeleteMapping (value = "/produits/{id]")
-    public ResponseEntity<?> deleteProduit(@PathVariable Long produitId) {
-        Produit produit = produitRepository.findById(produitId)
-                .orElseThrow(() -> new ResourceNotFoundException("Produit","idProduit", produitId));
+    @DeleteMapping (value = "/produits/{idProduit}")
+    public ResponseEntity<?> deleteProduit(@PathVariable Long idProduit) {
+        Produit produit = produitRepository.findById(idProduit)
+                .orElseThrow(() -> new ResourceNotFoundException("Produit","idProduit", idProduit));
         produitRepository.delete(produit);
         return ResponseEntity.ok().build();
     }

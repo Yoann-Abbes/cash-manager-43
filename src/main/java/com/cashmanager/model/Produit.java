@@ -22,7 +22,7 @@ public class Produit implements Serializable {
 //    private Blob image;
 
     @Column(name = "id_produit")
-    private int idProduit;
+    private long idProduit;
 
     @Column(name = "name")
     private String name;
@@ -34,11 +34,7 @@ public class Produit implements Serializable {
 //        return image;
 //    }
 
-    public int getIdProduit() {
-        return this.idProduit;
-    }
-
-    public int getId() {
+    public long getId() {
         return this.idProduit;
     }
 
