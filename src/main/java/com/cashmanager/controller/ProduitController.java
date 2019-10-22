@@ -11,46 +11,48 @@ import javax.persistence.ElementCollection;
 import javax.validation.Valid;
 import java.util.List;
 
+@RestController
 public class ProduitController {
     @Autowired
-    ProduitRepository produitRepository;
+    private ProduitRepository produitRepository;
 
     //Get all Produits
-    @GetMapping("/produits")
+    @GetMapping(value = "/produits")
     public List<Produit> getAllProduits(){
+        System.out.println("=================================");
         return produitRepository.findAll();
     }
 
     //Create a new Produit
-    @PostMapping("/produits")
-    public Produit createProduit(@Valid @ RequestBody Produit produit) {
+    @PostMapping(value = "/produits")
+    public Produit createProduit(@Valid @RequestBody Produit produit) {
         return produitRepository.save(produit);
     }
 
 
     // Get a single produit
-    @GetMapping("/produits/{id}")
-    public Produit getProduitById(@PathVariable(value = "idProduit") Long produitId ) {
+    @GetMapping(value = "/produits/{id}")
+    public Produit getProduitById(@PathVariable Long produitId ) {
         return produitRepository.findById(produitId)
                 .orElseThrow(() ->new ResourceNotFoundException("Produit", "idProduit", produitId)) ;
     }
 
     // Update a Produit
-    @PutMapping("/produits/{id]")
-    public Produit updateProduit(@PathVariable(value = "idProduit") Long produitId,
+    @PutMapping(value = "/produits/{id]")
+    public Produit updateProduit(@PathVariable Long produitId,
                                  @Valid @RequestBody Produit produitDetails) {
         Produit produit = produitRepository.findById(produitId)
-                .orElseThrow(() -> new ResourceNotFoundException("Produit", "id", produitId));
+                .orElseThrow(() -> new ResourceNotFoundException("Produit", "idProduit", produitId));
         produit.setName(produitDetails.getName());
         produit.setPrix(produitDetails.getPrix());
         Produit updatedProduit = produitRepository.save(produit);
         return updatedProduit;
     }
 
-    @DeleteMapping ("/produits/{id]")
-    public ResponseEntity<?> deleteProduit(@PathVariable(value = "idProduit") Long produitId) {
+    @DeleteMapping (value = "/produits/{id]")
+    public ResponseEntity<?> deleteProduit(@PathVariable Long produitId) {
         Produit produit = produitRepository.findById(produitId)
-                .orElseThrow(() -> new ResourceNotFoundException("User","id",produitId));
+                .orElseThrow(() -> new ResourceNotFoundException("Produit","idProduit", produitId));
         produitRepository.delete(produit);
         return ResponseEntity.ok().build();
     }

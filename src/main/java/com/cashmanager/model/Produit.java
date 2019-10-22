@@ -2,26 +2,43 @@ package com.cashmanager.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.beans.JavaBean;
 import java.io.Serializable;
+import java.sql.Blob;
 
 @Entity
-@Table(name= "Produit")
-@JsonIgnoreProperties(allowGetters = true)
+@Table(name = "produit")
+@JavaBean
 public class Produit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduit;
 
-    @NotBlank
+//    @Lob @Type(type="org.hibernate.type.BlobType")
+//    private Blob image;
+
+    @Column(name = "id_produit")
+    private int idProduit;
+
+    @Column(name = "name")
     private String name;
-    @NotBlank
+
+    @Column(name = "prix")
     private double prix;
 
+//    public Blob getImage() {
+//        return image;
+//    }
 
-    public Long getId() {
+    public int getIdProduit() {
+        return this.idProduit;
+    }
+
+    public int getId() {
         return this.idProduit;
     }
 

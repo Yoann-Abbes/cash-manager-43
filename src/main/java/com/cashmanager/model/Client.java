@@ -22,6 +22,7 @@ public class Client implements Serializable {
     @Column(name = "prenom")
     private String prenom;
 
+    @Column(name = "id_client")
     public Long getId() {
         return this.idClient;
     }
