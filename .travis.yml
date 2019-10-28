@@ -3,8 +3,12 @@ _unit-tests: &unit-tests
   os: linux
   sudo: required
   services: docker
+  cache:
+  install:
+    - sudo sysctl -w vm.max_map_count=262144
   script:
-    - ./mvnw test -B
+    - ./tests/test.sh
+
 
 ### Futur Job pour les tests fonctionnels
 #_functional-tests: &functional-tests
