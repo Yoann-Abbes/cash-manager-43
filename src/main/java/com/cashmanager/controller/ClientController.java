@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients/")
+@RequestMapping("/")
 @Api(value = "Client Controller")
 public class ClientController {
 
