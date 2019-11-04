@@ -9,7 +9,7 @@ services:
     depends_on:
       - "mysqldb"
     volumes:
-      - .:/app
+      - .:/appgit
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/cash_manager
       SPRING_DATASOURCE_USERNAME: root
