@@ -21,13 +21,13 @@
 									"});",
 									"pm.test(\"Check nom\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"John\");",
+									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
 									"    ",
 									"});",
 									"",
 									"pm.test(\"Check prenom\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Doe\");",
+									"    pm.expect(jsonData.prenom).to.eql(\"Bar\");",
 									"    ",
 									"});"
 								],
@@ -106,15 +106,6 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
-									"});",
-									"",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Bar\");",
 									"});"
 								],
 								"type": "text/javascript"
