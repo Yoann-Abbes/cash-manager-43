@@ -9,16 +9,25 @@ import java.io.Serializable;
 public class PaymentMode implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPaymentMode;
+    private Long id_mode_paiement;
 
-    @Column(name = "paymentMode")
-    private String paymentMode;
+    @Column(name = "mode_paiement")
+    private String mode_paiement;
 
-    public String getMode() {
-        return this.paymentMode;
+    @Column(name = "id_mode_paiement")
+
+    public Long getId() {
+        return this.id_mode_paiement;
     }
-    public void setpaymentMode(String paymentMode) {
-        this.paymentMode = paymentMode;
+
+    public String getPaymentMode() {
+        return this.mode_paiement;
     }
+
+    public void setPaymentMode(String mode_paiement) {
+        this.mode_paiement = mode_paiement;
+    }
+
+
 }
 
