@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "bc85c7b6-17c6-4c99-881d-a28e5fdaa6a8",
+		"name": "cash_manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ClientController",
+			"item": [
+				{
+					"name": "Create a Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bbad6781-b9da-48ce-8896-813c3974f876",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check nom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Bar\");",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"prenom\": \"Bar\",\n\t\"nom\": \"Foo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"John\");",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Doe\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "235cd3ee-a9d0-40ad-8c62-288262a6236a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"prenom\": \"Booba\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PaymentModeController",
+			"item": [
+				{
+					"name": "Create a payment mode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bbad6781-b9da-48ce-8896-813c3974f876",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"paymentMode\":\"carte bancaire\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/paymentmode",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all payment modes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paymentmode",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by payment mode by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paymentmode/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a payment mode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "235cd3ee-a9d0-40ad-8c62-288262a6236a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"paymentMode\":\"chèque\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/paymentmode/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a payment mode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "Localhost:8080/paymentmode/1",
+							"host": [
+								"Localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
