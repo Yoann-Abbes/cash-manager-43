@@ -9,43 +9,6 @@
 			"name": "ClientController",
 			"item": [
 				{
-					"name": "Get all Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(2);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/clients",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create a Client",
 					"event": [
 						{
@@ -101,15 +64,19 @@
 					"response": []
 				},
 				{
-					"name": "Delete a Client",
+					"name": "Get all Client",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -117,14 +84,52 @@
 						}
 					],
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:8080/clients/3",
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Bar\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -132,7 +137,7 @@
 							"port": "8080",
 							"path": [
 								"clients",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -188,24 +193,15 @@
 					"response": []
 				},
 				{
-					"name": "Get by Id",
+					"name": "Delete a Client",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Morgan\");",
-									"});",
-									"",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Freeman\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -213,10 +209,14 @@
 						}
 					],
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:8080/clients/2",
+							"raw": "http://localhost:8080/clients/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -224,7 +224,7 @@
 							"port": "8080",
 							"path": [
 								"clients",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -237,43 +237,6 @@
 			"name": "PaymentModeController",
 			"item": [
 				{
-					"name": "Get all payment modes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(2);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/clients",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create a payment mode",
 					"event": [
 						{
@@ -283,11 +246,6 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check Payment mode\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.paymentMode).to.eql(\"carte bancaire\");",
-									"    ",
 									"});",
 									""
 								],
@@ -323,6 +281,71 @@
 					"response": []
 				},
 				{
+					"name": "Get all payment modes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paymentmode",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by payment mode by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paymentmode/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paymentmode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update a payment mode",
 					"event": [
 						{
@@ -332,10 +355,6 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -354,55 +373,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Booba\"\n}"
+							"raw": "{\n\t\"paymentMode\":\"chèque\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/clients/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get by payment mode by id",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check payment mode\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.paymentMode).to.eql(\"chèque\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/paymentmode/2",
+							"raw": "localhost:8080/paymentmode/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"paymentmode",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -432,15 +413,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/clients/3",
-							"protocol": "http",
+							"raw": "Localhost:8080/paymentmode/1",
 							"host": [
-								"localhost"
+								"Localhost"
 							],
 							"port": "8080",
 							"path": [
-								"clients",
-								"3"
+								"paymentmode",
+								"1"
 							]
 						}
 					},
