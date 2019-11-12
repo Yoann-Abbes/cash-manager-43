@@ -65,9 +65,7 @@ public class PanierController {
     @DeleteMapping (value = "/paniers/{idClient}")
     public ResponseEntity<?> deletePanier(@ApiParam(value = "Client Id from which panier object will deleted from the database", required = true)@PathVariable Long idClient) {
         List<Panier> paniers = panierRepository.getbyidclient(idClient);
-        for (Panier p : paniers) {
-            panierRepository.deletebyidclient(p.getIdClient());
-        }
+            panierRepository.deletebyidclient(paniers.get(0).getIdClient());
         return ResponseEntity.ok().build();
     }
 
