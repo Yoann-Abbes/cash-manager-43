@@ -2,18 +2,16 @@ version: '3'
 services:
   cash_manager:
     container_name: cash_manager
-    image: maven:3.5-jdk-9
+    image: yabbes/cash-manager:latest
     restart: always
     ports:
       - "8080:8080"
     depends_on:
       - "mysqldb"
-    volumes:
-      - .:/app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/cash_manager
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: cashmanager
+       SPRING_DATASOURCE_URL: $SPRING_DATASOURCE_URL
+       SPRING_DATASOURCE_USERNAME: $SPRING_DATASOURCE_USERNAME
+       SPRING_DATASOURCE_PASSWORD: $SPRING_DATASOURCE_PASSWORD
     expose:
       - "8080"
     working_dir: /app
@@ -28,7 +26,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=cashmanager
-      - MYSQL_DATABASE=cash_manager
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
     volumes:
       - ./mysql-dump:/docker-entrypoint-initdb.d
