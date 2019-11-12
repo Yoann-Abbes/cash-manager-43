@@ -8,7 +8,7 @@ main() {
  sleep 5
 done
     npm install -g newman
-    newman run ./tests/Tests-collection.json --timeout 18000000 --timeout-request 18000000 --timeout-script 18000000 --bail
+    newman run ./tests/Tests-collection.json.json --timeout 18000000 --timeout-request 18000000 --timeout-script 18000000 --bail
     status=$?
     exit $status
 }

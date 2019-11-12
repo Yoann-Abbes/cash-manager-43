@@ -66,7 +66,9 @@ public class ClientController {
 
     // Delete a Client
     @DeleteMapping(value = "/clients/{idClient}")
-    public ResponseEntity<?> deleteClient(@ApiParam(value = "Client Id from which client object will delete from database table", required = true) @PathVariable Long idClient) {
+    public ResponseEntity<?> deleteClient(
+            @ApiParam(value = "Client Id from which client object will delete from database table", required = true)
+                                              @PathVariable Long idClient) {
         Client client = clientRepository.findById(idClient)
                 .orElseThrow(() -> new ResourceNotFoundException("Client", "idClient", idClient));
 
