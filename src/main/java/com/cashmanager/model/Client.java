@@ -28,7 +28,6 @@ public class Client implements Serializable {
     @ApiModelProperty(notes = "The client first name")
     private String prenom;
 
-    @Column(name = "id_client")
     public Long getId() {
         return this.idClient;
     }
