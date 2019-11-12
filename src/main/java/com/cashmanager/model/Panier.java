@@ -16,41 +16,41 @@ import java.io.Serializable;
 
 public class Panier implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes="The Panier id")
-    @Column(name="id_panier")
-    private Long id_panier;
+    private Long idPanier;
 
-    @Column(name="id_client")
+    @Column(name="idClient")
     @ApiModelProperty(notes="The client owning the Panier")
-    private Long id_client;
+    private Long idClient;
 
-    @Column(name="id_produit")
+    @Column(name="idProduit")
     @ApiModelProperty(notes="A Produit in the Panier")
-    private Long id_produit;
+    private Long idProduit;
 
 
     // GET and SET
     public Long getIdPanier(){
-        return this.id_panier;
+        return this.idPanier;
     }
-    public void setIdPanier(Long id_panier){
-        this.id_panier = id_panier;
+    public void setIdPanier(Long idPanier){
+        this.idPanier = idPanier;
     }
 
 
     public Long getIdClient(){
-        return this.id_client;
+        return this.idClient;
     }
-    public void setIdClient(Long id_client){
-        this.id_client = id_client;
+    public void setIdClient(Long idClient){
+        this.idClient = idClient;
     }
 
 
     public Long getIdProduit() {
-        return  this.id_produit;
+        return  this.idProduit;
     }
-    public void setIdProduit(Long id_produit){
-        this.id_produit= id_produit;
+    public void setIdProduit(Long idProduit){
+        this.idProduit= idProduit;
     }
 
 }

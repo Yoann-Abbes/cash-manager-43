@@ -43,9 +43,9 @@ public class PanierController {
 
     // Get a single panier
     @ApiOperation(value = "Get a panier by id")
-    @GetMapping(value = "/paniers/{id_panier}")
-    public Panier getPanierById(@ApiParam (value = " Panier Id from which the panier object will be retrieved", required = true )@PathVariable Long id_panier) {
-        return (Panier) panierRepository.getbyidpanier(id_panier);
+    @GetMapping(value = "/paniers/{idPanier}")
+    public Panier getPanierById(@ApiParam (value = " Client Id linked to the panier object we want to retrieve", required = true )@PathVariable Long idClient) {
+        return (Panier) panierRepository.getbyidclient(idClient);
     }
 
     // Update a Panier
@@ -62,10 +62,12 @@ public class PanierController {
     //return updatedPanier;
     //}
 
-    @DeleteMapping (value = "/paniers/{id_panier}")
-    public ResponseEntity<?> deletePaiement(@ApiParam(value = "Panier Id from which panier object will deleted from the database", required = true)@PathVariable Long id_panier) {
-        Panier panier = (Panier) panierRepository.getbyidpanier(id_panier);
-        panierRepository.deletebyidpanier(panier.getIdPanier());
+    @DeleteMapping (value = "/paniers/{idClient}")
+    public ResponseEntity<?> deletePanier(@ApiParam(value = "Client Id from which panier object will deleted from the database", required = true)@PathVariable Long idClient) {
+        List<Panier> paniers = panierRepository.getbyidclient(idClient);
+        for (Panier p : paniers) {
+            panierRepository.deletebyidclient(p.getIdClient());
+        }
         return ResponseEntity.ok().build();
     }
 

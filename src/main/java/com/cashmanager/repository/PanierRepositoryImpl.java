@@ -14,19 +14,19 @@ public class PanierRepositoryImpl implements PanierRepositoryCustom {
     EntityManager entityManager;
 
     @Override
-    public List<Panier> getbyidpanier(Long id_panier) {
+    public List<Panier> getbyidclient(Long idClient) {
         Query query = entityManager.createNativeQuery("SELECT * FROM  Panier p " +
 
-                "WHERE p.id_panier=?");
+                "WHERE p.idClient=?");
 
 
-        query.setParameter(1, id_panier);
+        query.setParameter(1, idClient);
         return query.getResultList();
     }
 
 
-    public void deletebyidpanier(Long id_panier){
-        Query query = entityManager.createNativeQuery("DELETE  FROM Panier WHERE id_panier = ?");
-        query.setParameter(1, id_panier);
+    public void deletebyidclient(Long idClient){
+        Query query = entityManager.createNativeQuery("DELETE  FROM Panier WHERE idClient = ?");
+        query.setParameter(1, idClient);
     };
 }

@@ -4,6 +4,6 @@ import com.cashmanager.model.Panier;
 
 public interface PanierRepositoryCustom {
 
-    List<Panier> getbyidpanier(Long id_panier);
-    void deletebyidpanier(Long id_panier);
+    List<Panier> getbyidclient(Long id_client);
+    void deletebyidclient(Long id_client);
 }
