@@ -7,7 +7,7 @@ _unit-tests: &unit-tests
   install:
     - sudo sysctl -w vm.max_map_count=262144
   script:
-    - ./backend/tests/test.sh
+    - ./tests/test.sh
 
 
 ### Futur Job pour les tests fonctionnels
