@@ -8,12 +8,6 @@ services:
       - "8080:8080"
     depends_on:
       - "mysqldb"
-    environment:
-       SPRING_DATASOURCE_URL: $SPRING_DATASOURCE_URL
-       SPRING_DATASOURCE_USERNAME: $SPRING_DATASOURCE_USERNAME
-       SPRING_DATASOURCE_PASSWORD: $SPRING_DATASOURCE_PASSWORD
-    expose:
-      - "8080"
     working_dir: /app
     command: mvn clean spring-boot:run
 
