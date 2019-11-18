@@ -1,7 +1,10 @@
 package com.cashmanager.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -30,18 +33,17 @@ public class Produit implements Serializable {
     @Column(name = "prix")
     private double prix;
 
-//    public Blob getImage() {
-//        return image;
-//    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "post_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Panier panier;
 
     public long getId() {
         return this.idProduit;
     }
 
-    public double getPrix() {
-        return this.prix;
-    }
-
+    public double getPrix() { return this.prix; }
     public void setPrix(double prix) {
         this.prix = prix;
     }
@@ -49,9 +51,12 @@ public class Produit implements Serializable {
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public Panier getPanier(){
+        return this.panier;
+    }
+    public void setPanier(Panier panier) { this.panier=panier;}
 }

@@ -17,33 +17,35 @@ public class Paiement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The database generated paiement ID")
-    private int id_paiement;
+    private int idPaiement;
 
-    @Column(name = "id_client")
+    //@Column(name = "id_client")
+    @NotBlank
     @ApiModelProperty(notes = "The Client linked to the Paiement")
-    private int id_client;
+    private int idClient;
 
-    @Column(name = "id_mode_paiement")
+    //@Column(name = "id_mode_paiement")
+    @NotBlank
     @ApiModelProperty(notes = "The MdP linked to the Paiement")
-    private int id_mode_paiement;
+    private int idModePaiement;
 
     @Column(name = "id_panier")
     @ApiModelProperty(notes = "The Panier containing the Paiement")
-    private int id_panier;
+    private int idPanier;
 
-    public int getId_paiement() { return this.id_paiement; }
+    public int getId_paiement() { return this.idPaiement; }
 
-    public int getIdClient() { return this.id_client; }
-    public void setId_client(int id_client) { this.id_client = id_client; }
+    public int getIdClient() { return this.idClient; }
+    public void setIdClient(int idClient) { this.idClient = idClient; }
 
     public int getIdMdP() {
-        return this.id_mode_paiement;
+        return this.idModePaiement;
     }
-    public void setId_mode_paiement(int id_mode_paiement) {  this.id_mode_paiement = id_mode_paiement; }
+    public void setIdModePaiement(int idModePaiement) {  this.idModePaiement = idModePaiement; }
 
-    public int getIdPanier() { return this.id_panier; }
-    public void setId_panier(int id_panier) {
-        this.id_panier = id_panier;
+    public int getIdPanier() { return this.idPanier; }
+    public void setIdPanier(int idPanier) {
+        this.idPanier = idPanier;
     }
 
 

@@ -20,15 +20,21 @@ public class Client implements Serializable {
     @ApiModelProperty(notes = "The database generated client ID")
     private Long idClient;
 
-    @Column(name = "nom")
+  //  @Column(name = "nom")
+    @NotBlank
     @ApiModelProperty(notes = "The client last name")
     private String nom;
 
-    @Column(name = "prenom")
+   // @Column(name = "prenom")
+    @NotBlank
     @ApiModelProperty(notes = "The client first name")
     private String prenom;
 
-    @Column(name = "id_client")
+    @OneToOne
+    @JoinColumn(name = "idPanier", referencedColumnName = "idPanier")
+    private Panier panier;
+
+   // @Column(name = "id_client")
     public Long getId() {
         return this.idClient;
     }
@@ -36,16 +42,17 @@ public class Client implements Serializable {
     public String getNom() {
         return this.nom;
     }
-
-    public String getPrenom() {
-        return this.prenom;
-    }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    public String getPrenom() {
+        return this.prenom;
+    }
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    public Panier getPanier() { return this.panier;}
+    public void setPanier(Panier panier) { this.panier=panier;}
 }

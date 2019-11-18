@@ -10,7 +10,7 @@ import java.beans.JavaBean;
 import java.io.Serializable;
 
 @Entity
-@Table(name="Panier")
+@Table(name="panier")
 @JavaBean
 @ApiModel(description = "All details about the Panier")
 
@@ -20,13 +20,14 @@ public class Panier implements Serializable {
     @ApiModelProperty(notes="The Panier id")
     private Long idPanier;
 
-    @Column(name="idClient")
+    @Column
+    @OneToOne(cascade = CascadeType.ALL)
     @ApiModelProperty(notes="The client owning the Panier")
-    private Long idClient;
+    private Client client;
 
-    @Column(name="idProduit")
-    @ApiModelProperty(notes="A Produit in the Panier")
-    private Long idProduit;
+    //@Column(name="id_produit")
+    //@ApiModelProperty(notes="A Produit in the Panier")
+    //private Long idProduit;
 
 
     // GET and SET
@@ -38,19 +39,20 @@ public class Panier implements Serializable {
     }
 
 
-    public Long getIdClient(){
-        return this.idClient;
+
+    public Client getClient(){
+        return this.client;
     }
-    public void setIdClient(Long idClient){
-        this.idClient = idClient;
+    public void setClient(Client client){
+        this.client = client;
     }
 
 
-    public Long getIdProduit() {
-        return  this.idProduit;
-    }
-    public void setIdProduit(Long idProduit){
-        this.idProduit= idProduit;
-    }
+    //public Long getIdProduit() {
+     //   return  this.idProduit;
+    //}
+//    public void setIdProduit(Long idProduit){
+ //       this.idProduit= idProduit;
+  //  }
 
 }

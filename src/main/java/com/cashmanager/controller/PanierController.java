@@ -1,16 +1,17 @@
 package com.cashmanager.controller;
 
+import com.cashmanager.exception.ResourceNotFoundException;
 import com.cashmanager.model.Panier;
 import com.cashmanager.repository.PanierRepository;
-import com.cashmanager.exception.ResourceNotFoundException;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.ElementCollection;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 public class PanierController {
@@ -42,30 +43,31 @@ public class PanierController {
 
 
     // Get a single panier
-    @ApiOperation(value = "Get a panier by id")
-    @GetMapping(value = "/paniers/{idPanier}")
-    public Panier getPanierById(@ApiParam (value = " Client Id linked to the panier object we want to retrieve", required = true )@PathVariable Long idClient) {
-        return (Panier) panierRepository.getbyidclient(idClient);
+     @ApiOperation(value = "Get a panier by id")
+     @GetMapping(value = "/paniers/{idPanier}")
+     public Optional<Panier> getPanierById(@ApiParam (value = " idPanier to fetch the panier object we want to retrieve", required = true )@PathVariable Long idPanier) {
+        return panierRepository.findById(idPanier);
     }
 
     // Update a Panier
-    //@ApiOperation(value = "Update a panier")
-    //@PutMapping(value = "/paniers/{id_panier}")
-    //public Panier updatePanier(@ApiParam(value = "Id of the panier to update", required = true)@PathVariable Long id_panier,
-    //                              @Valid @RequestBody Panier panierDetails) {
-    //    Panier panier = panierRepository.findById(id_panier)
-    //            .orElseThrow(() -> new ResourceNotFoundException("id_panier", "id_panier", id_panier));
-    //    panier.setIdClient(panierDetails.getIdClient());
-    //    panier.setIdPanier(panierDetails.getIdPanier());
-    //   panier.setIdProduit(panierDetails.getIdProduit());
-    //   Panier updatedPanier = panierRepository.save(panier);
-    //return updatedPanier;
-    //}
+    @ApiOperation(value = "Update a panier")
+    @PutMapping(value = "/paniers/{idPanier}")
+    public Panier updatePanier(@ApiParam(value = "Id of the panier to update", required = true)@PathVariable Long idPanier,
+                                  @Valid @RequestBody Panier panierDetails) {
+        Panier panier = panierRepository.findById(idPanier)
+                .orElseThrow(() -> new ResourceNotFoundException("idPanier", "idPanier", idPanier));
+        panier.setClient(panierDetails.getClient());
+        panier.setIdPanier(panierDetails.getIdPanier());
+        Panier updatedPanier = panierRepository.save(panier);
+        return updatedPanier;
+    }
 
-    @DeleteMapping (value = "/paniers/{idClient}")
-    public ResponseEntity<?> deletePanier(@ApiParam(value = "Client Id from which panier object will deleted from the database", required = true)@PathVariable Long idClient) {
-        List<Panier> paniers = panierRepository.getbyidclient(idClient);
-            panierRepository.deletebyidclient(paniers.get(0).getIdClient());
+
+    @DeleteMapping (value = "/produits/{idProduit}")
+    public ResponseEntity<?> deletePanier(@PathVariable Long idPanier) {
+        Panier panier = panierRepository.findById(idPanier)
+                .orElseThrow(() -> new ResourceNotFoundException("Panier","idPanier", idPanier));
+        panierRepository.delete(panier);
         return ResponseEntity.ok().build();
     }
 

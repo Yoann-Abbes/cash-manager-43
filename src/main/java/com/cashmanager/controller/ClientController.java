@@ -60,6 +60,7 @@ public class ClientController {
 
         client.setNom(clientDetails.getNom());
         client.setPrenom(clientDetails.getPrenom());
+        client.setPanier(clientDetails.getPanier());
 
         Client updatedClient = clientRepository.save(client);
         return updatedClient;
