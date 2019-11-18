@@ -9,7 +9,7 @@ services:
     depends_on:
       - "mysqldb"
     working_dir: /app
-    command: mvn clean spring-boot:run
+    command: bash -c "mvn -f ./pom.xml clean package install && java -jar ./target/cash-manager-43.jar"
 
   mysqldb:
     container_name: mysqldb
