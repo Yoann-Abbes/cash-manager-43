@@ -43,30 +43,31 @@ public class PanierController {
 
 
     // Get a single panier
-     @ApiOperation(value = "Get a panier by id")
-     @GetMapping(value = "/paniers/{idPanier}")
-     public Optional<Panier> getPanierById(@ApiParam (value = " idPanier to fetch the panier object we want to retrieve", required = true )@PathVariable Long idPanier) {
-        return panierRepository.findById(idPanier);
+    @ApiOperation(value = "Get a panier by id")
+    @GetMapping(value = "/paniers/{id_panier}")
+    public Optional<Panier> getPanierById(@ApiParam (value = " id to fetch the panier object we want to retrieve", required = true )@PathVariable Long id_panier) {
+        return panierRepository.findById(id_panier);
     }
 
     // Update a Panier
     @ApiOperation(value = "Update a panier")
-    @PutMapping(value = "/paniers/{idPanier}")
-    public Panier updatePanier(@ApiParam(value = "Id of the panier to update", required = true)@PathVariable Long idPanier,
-                                  @Valid @RequestBody Panier panierDetails) {
-        Panier panier = panierRepository.findById(idPanier)
-                .orElseThrow(() -> new ResourceNotFoundException("idPanier", "idPanier", idPanier));
+    @PutMapping(value = "/paniers/{id_panier}")
+    public Panier updatePanier(@ApiParam(value = "Id of the panier to update", required = true)@PathVariable Long id_panier,
+                               @Valid @RequestBody Panier panierDetails) {
+        Panier panier = panierRepository.findById(id_panier)
+                .orElseThrow(() -> new ResourceNotFoundException("idPanier", "idPanier", id_panier));
         panier.setClient(panierDetails.getClient());
         panier.setIdPanier(panierDetails.getIdPanier());
+        panier.setProduit(panierDetails.getProduit());
         Panier updatedPanier = panierRepository.save(panier);
         return updatedPanier;
     }
 
 
     @DeleteMapping (value = "/produits/{idProduit}")
-    public ResponseEntity<?> deletePanier(@PathVariable Long idPanier) {
-        Panier panier = panierRepository.findById(idPanier)
-                .orElseThrow(() -> new ResourceNotFoundException("Panier","idPanier", idPanier));
+    public ResponseEntity<?> deletePanier(@PathVariable Long id_panier) {
+        Panier panier = panierRepository.findById(id_panier)
+                .orElseThrow(() -> new ResourceNotFoundException("Panier","id_panier", id_panier));
         panierRepository.delete(panier);
         return ResponseEntity.ok().build();
     }

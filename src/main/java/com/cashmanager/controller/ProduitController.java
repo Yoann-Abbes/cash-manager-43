@@ -25,56 +25,59 @@ public class ProduitController {
 
     //Get all Produits
     @GetMapping(value = "/produits")
-    public List<Produit> getAllProduits(){
+    public Iterable<Produit> getAllProduits(){
         return produitRepository.findAll();
     }
 
-    @GetMapping(value = "/produits")
-    public Page<Produit> getProduitsbyIdPanier(@PathVariable (value = "idPanier") Long idPanier,
+    @GetMapping(value = "/paniers/{panier_id}/produits")
+    public Page<Produit> getProduitsbyIdPanier(@PathVariable (value = "panier_id") Long id_panier,
                                                Pageable pageable){
-        return produitRepository.findByPanierId(idPanier, pageable);
+        return produitRepository.findByPanierId(id_panier, pageable);
     }
-    //Create a new Produit
-    @PostMapping(value = "/produits")
-    public Produit createProduit(@PathVariable (value ="idPanier") Long idPanier,
-                                 @Valid @RequestBody Produit produit) {
-        return panierRepository.findById(idPanier).map(panier -> {
-            produit.setPanier(panier);
-            return produitRepository.save(produit);
-        }).orElseThrow(() -> new ResourceNotFoundException("idPanier", "idPanier", idPanier));
-    }
-
 
     // Get a single produit
     @GetMapping(value = "/produits/{idProduit}")
-    public Produit getProduitById(@PathVariable Long idProduit ) {
-        return produitRepository.findById(idProduit)
-                .orElseThrow(() ->new ResourceNotFoundException("Produit", "idProduit", idProduit)) ;
+    public Produit getProduitById(@PathVariable(value ="id") Long produit_id ) {
+        return produitRepository.findById(produit_id)
+                .orElseThrow(() ->new ResourceNotFoundException("Produit", "id", produit_id)) ;
     }
+
+
+
+    //Create a new Produit
+    @PostMapping(value = "/paniers/{panier_id}/produits")
+    public Produit createProduit(@PathVariable (value ="panier_id") Long id_panier,
+                                 @Valid @RequestBody Produit produit) {
+        return panierRepository.findById(id_panier).map(panier -> {
+            produit.setPanier(panier);
+            return produitRepository.save(produit);
+        }).orElseThrow(() -> new ResourceNotFoundException("panier_id", "panier_id", id_panier));
+    }
+
 
     // Update a Produit
-    @PutMapping(value = "/produits/{idProduit}")
-    public Produit updateProduit(@PathVariable Long idProduit,
-                                 @PathVariable Long idPanier,
+    @PutMapping(value = "/paniers/{panier_id}/produits/{produit_id}")
+    public Produit updateProduit(@PathVariable (value="panier_id") Long produit_id,
+                                 @PathVariable (value="produit_id")Long panier_id,
                                  @Valid @RequestBody Produit produitDetails) {
-        if (!panierRepository.existsById(idPanier)){
-                 throw new ResourceNotFoundException("Panier", "idPanier", idPanier);
+        if (!panierRepository.existsById(panier_id)){
+            throw new ResourceNotFoundException("Panier", "id", panier_id);
         }
-        return produitRepository.findById(idProduit).map(produit -> {
+        return produitRepository.findById(produit_id).map(produit -> {
             produit.setName(produitDetails.getName());
             produit.setPrix(produitDetails.getPrix());
+            produit.setPanier((produitDetails.getPanier()));
             return produitRepository.save(produit);
-        }).orElseThrow(() -> new ResourceNotFoundException("Produit", "idProduit", idProduit ));
+        }).orElseThrow(() -> new ResourceNotFoundException("Produit", "id", produit_id ));
 
     }
 
-    @DeleteMapping (value = "/produits/{idProduit}")
-    public ResponseEntity<?> deleteProduit(@PathVariable (value = "idPanier") Long idPanier,
-                                           @PathVariable (value = "idProduit") Long idProduit) {
-        return produitRepository.findByIdAndPanierId(idProduit, idPanier).map(produit -> {
+    @DeleteMapping (value = "/produits/{produit_id}")
+    public ResponseEntity<?> deleteProduit(@PathVariable (value = "produit_id") Long produit_id) {
+        return produitRepository.findById(produit_id).map(produit -> {
             produitRepository.delete(produit);
             return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("Produit", "idProduit ", idProduit));
+        }).orElseThrow(() -> new ResourceNotFoundException("Produit", "id", produit_id));
     }
 
 }

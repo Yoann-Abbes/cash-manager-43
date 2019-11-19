@@ -23,13 +23,14 @@ public class ClientController {
     // Get All Clients
     @ApiOperation(value = "View a list of available employees", response = List.class)
     @ApiResponses(value = {
-    @ApiResponse(code = 200, message = "Successfully retrieved list"),
-    @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-    @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-    @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
+
     @GetMapping(value = "/clients")
-    public List<Client> getAllClients() {
+    public Iterable<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
@@ -42,35 +43,39 @@ public class ClientController {
 
     // Get a Single Client by id
     @ApiOperation(value = "Get an Client by Id")
-    @GetMapping(value = "/clients/{idClient}")
-    public Client getClientById(@ApiParam(value = "Client id from which client object will retrieve", required = true) @PathVariable Long idClient) {
-        return clientRepository.findById(idClient)
-                .orElseThrow(() -> new ResourceNotFoundException("Client", "idClient", idClient));
+    @GetMapping(value = "/clients/{id}")
+    public Client getClientById(@ApiParam(value = "Client id from which client object will retrieve", required = true) @PathVariable (value="id") Long client_id) {
+        return clientRepository.findById(client_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Client", "id", client_id));
     }
 
 
     // Update a Client
     @ApiOperation(value = "Update a client")
     @PutMapping(value = "/clients/{idClient}")
-    public Client updateClient(@ApiParam(value = "Employee Id to update employee object", required = true) @PathVariable Long idClient,
-                             @Valid @RequestBody Client clientDetails) {
+    public Client updateClient(@ApiParam(value = "Employee Id to update employee object", required = true)
+                               @PathVariable (value = "id") Long client_id,
+                               @Valid @RequestBody Client clientDetails) {
 
-        Client client = clientRepository.findById(idClient)
-                .orElseThrow(() -> new ResourceNotFoundException("Client", "idClient", idClient));
+        Client client = clientRepository.findById(client_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Client", "id", client_id));
 
         client.setNom(clientDetails.getNom());
         client.setPrenom(clientDetails.getPrenom());
         client.setPanier(clientDetails.getPanier());
-
+        client.setLogin((clientDetails.getLogin()));
+        client.setEmail(clientDetails.getEmail());
+        client.setMdp(clientDetails.getMdp());
         Client updatedClient = clientRepository.save(client);
         return updatedClient;
     }
 
     // Delete a Client
     @DeleteMapping(value = "/clients/{idClient}")
-    public ResponseEntity<?> deleteClient(@ApiParam(value = "Client Id from which client object will delete from database table", required = true) @PathVariable Long idClient) {
-        Client client = clientRepository.findById(idClient)
-                .orElseThrow(() -> new ResourceNotFoundException("Client", "idClient", idClient));
+    public ResponseEntity<?> deleteClient(@ApiParam(value = "Client Id from which client object will delete from database table", required = true)
+                                          @PathVariable(value = "id")  Long client_id) {
+        Client client = clientRepository.findById(client_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Client", "client_id", client_id));
 
         clientRepository.delete(client);
 

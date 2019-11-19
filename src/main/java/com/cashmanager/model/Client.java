@@ -18,26 +18,48 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The database generated client ID")
-    private Long idClient;
+    private Long id;
 
-  //  @Column(name = "nom")
     @NotBlank
+    @Column
     @ApiModelProperty(notes = "The client last name")
     private String nom;
 
-   // @Column(name = "prenom")
     @NotBlank
+    @Column
+    @ApiModelProperty(notes = "The client's email adress")
+    private String email;
+
+    @Column
+    @NotBlank
+    private String mdp;
+
+    @NotBlank
+    @Column
+    @ApiModelProperty(notes = "The client's login")
+    private String login;
+
+    @NotBlank
+    @Column
     @ApiModelProperty(notes = "The client first name")
     private String prenom;
 
-    @OneToOne
-    @JoinColumn(name = "idPanier", referencedColumnName = "idPanier")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "panier_id", referencedColumnName = "id")
+    @ApiModelProperty(notes="The client owning the Panier")
     private Panier panier;
 
-   // @Column(name = "id_client")
-    public Long getId() {
-        return this.idClient;
-    }
+
+    public Long getId() { return this.id; }
+
+    public String getLogin(){ return this.login; }
+    public void setLogin(String login){this.login = login;}
+
+    public String getEmail() {return this.email;}
+    public void setEmail(String email){ this.email = email;}
+
+    public String getMdp(){ return this.mdp;}
+    public void setMdp(String mdp) { this.mdp = mdp;}
 
     public String getNom() {
         return this.nom;

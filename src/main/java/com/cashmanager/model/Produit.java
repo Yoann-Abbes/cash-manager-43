@@ -9,38 +9,37 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.beans.JavaBean;
 import java.io.Serializable;
 import java.sql.Blob;
 
 @Entity
 @Table(name = "produit")
-@JavaBean
+@JsonIgnoreProperties(allowGetters = true)
+
 public class Produit implements Serializable {
+
+    public Produit() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-//    @Lob @Type(type="org.hibernate.type.BlobType")
-//    private Blob image;
-
-    @Column(name = "id_produit")
-    private long idProduit;
-
-    @Column(name = "name")
+    @Column
+    @NotBlank
     private String name;
 
-    @Column(name = "prix")
+    @NotNull
     private double prix;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "panier_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Panier panier;
 
-    public long getId() {
-        return this.idProduit;
+    public Long getId() {
+        return this.id;
     }
 
     public double getPrix() { return this.prix; }
@@ -55,8 +54,5 @@ public class Produit implements Serializable {
         this.name = name;
     }
 
-    public Panier getPanier(){
-        return this.panier;
-    }
     public void setPanier(Panier panier) { this.panier=panier;}
 }
