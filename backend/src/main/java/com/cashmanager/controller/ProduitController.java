@@ -42,11 +42,24 @@ public class ProduitController {
                 .orElseThrow(() ->new ResourceNotFoundException("Produit", "id", produit_id)) ;
     }
 
-
+    @PostMapping(value="/produits")
+    public Produit createProduit(@Valid @RequestBody Produit produit)
+    {
+        return produitRepository.save(produit);
+    }
+    @PostMapping("/paniers/{panier_id}/{id}")
+    public Produit createProduitWithPanierId(@PathVariable (value = "panier_id") Long panier_id,
+                                           @PathVariable (value = "id") Long produit_id) {
+        Produit produit = produitRepository.getOne(produit_id);
+        return panierRepository.findById(panier_id).map(panier -> {
+            produit.setPanier(panier);
+            return produitRepository.save(produit);
+        }).orElseThrow(() -> new ResourceNotFoundException("Panier", "id", panier_id));
+    }
 
     //Create a new Produit
     @PostMapping(value = "/paniers/{panier_id}/produits")
-    public Produit createProduit(@PathVariable (value ="panier_id") Long id_panier,
+    public Produit createProduitWithPanier(@PathVariable (value ="panier_id") Long id_panier,
                                  @Valid @RequestBody Produit produit) {
         return panierRepository.findById(id_panier).map(panier -> {
             produit.setPanier(panier);
