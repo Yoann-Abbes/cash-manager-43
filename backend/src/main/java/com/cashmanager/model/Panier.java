@@ -1,6 +1,7 @@
 package com.cashmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cascade;
@@ -30,7 +31,8 @@ public class Panier implements Serializable {
     @ApiModelProperty(notes="The client owning the Panier")
     private Client client;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "panier")
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "panier",targetEntity = Produit.class)
     private Set<Produit> produit = new HashSet<>();
 
     @Value("0")

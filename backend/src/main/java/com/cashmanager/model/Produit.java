@@ -1,6 +1,7 @@
 package com.cashmanager.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
@@ -33,19 +34,16 @@ public class Produit implements Serializable {
     @NotNull
     private double prix;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "panier_id", nullable = true)
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "panier_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Panier panier;
 
-    public Long getId() {
-        return this.id;
-    }
+    public Long getId() { return this.id; }
 
     public double getPrix() { return this.prix; }
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
+    public void setPrix(double prix) { this.prix = prix; }
 
     public String getName() {
         return this.name;
@@ -54,5 +52,6 @@ public class Produit implements Serializable {
         this.name = name;
     }
 
+    public Panier getPanier(){return this.panier;}
     public void setPanier(Panier panier) { this.panier=panier;}
 }
