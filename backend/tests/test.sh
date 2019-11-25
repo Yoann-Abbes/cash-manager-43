@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-    docker-compose up -d
+    docker-compose up -dc
 
     until curl --output /dev/null --silent --fail -d -H "Content-Type: application/json" -X GET http://localhost:8080/clients; do
  printf 'Waiting ...'
