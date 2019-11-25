@@ -14,8 +14,8 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-backend/.idea
-.idea
+/backend/.idea/
+/.idea/
 *.iws
 *.iml
 *.ipr
@@ -30,3 +30,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
