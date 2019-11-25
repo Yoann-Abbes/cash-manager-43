@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 services:
   cash_manager:
     container_name: cash_manager
@@ -7,9 +7,9 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - "mysqldb"
+        mysqldb:
+          condition: "service_healthy"
     working_dir: /app
-    command: bash -c "mvn -f ./pom.xml clean package install && java -jar ./target/cash-manager-43.jar"
 
   mysqldb:
     container_name: mysqldb
@@ -24,3 +24,8 @@ services:
       - MYSQL_DATABASE=$MYSQL_DATABASE
     volumes:
       - ./mysql-dump:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=cashmanager --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
