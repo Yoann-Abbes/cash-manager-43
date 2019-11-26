@@ -18,10 +18,10 @@ services:
     security_opt:
       - seccomp:unconfined
     ports:
-      - "3306:3306"
+      - "3307:3307"
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD=cashmanager
+      - MYSQL_DATABASE=cash_manager
     volumes:
       - ./mysql:/etc/mysql/conf.d
       - ./mysql-dump:/docker-entrypoint-initdb.d

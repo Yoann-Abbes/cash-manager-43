@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/")
 @Api(value = "PaymentMode Controller")
 
 public class PaymentModeController {
