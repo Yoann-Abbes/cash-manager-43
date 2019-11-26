@@ -37,7 +37,6 @@ public class Produit implements Serializable {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "panier_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Panier panier;
 
     public Long getId() { return this.id; }

@@ -1,8 +1,10 @@
 package com.cashmanager.controller;
 
 import com.cashmanager.model.Client;
+import com.cashmanager.model.Panier;
 import com.cashmanager.repository.ClientRepository;
 import com.cashmanager.exception.ResourceNotFoundException;
+import com.cashmanager.repository.PanierRepository;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,8 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private PanierRepository panierRepository;
     // Get All Clients
     @ApiOperation(value = "View a list of available employees", response = List.class)
     @ApiResponses(value = {
@@ -70,15 +74,30 @@ public class ClientController {
         return updatedClient;
     }
 
+    //Link Panier to Client
+    //@ApiOperation(value = "Link a Panier to a Client")
+    //@PutMapping(value = "/clients/{id}/{produit_id}")
+    //public Client linktoPanier(@PathVariable (value = "id") Long client_id,
+    //                           Long panier_id){
+    //    Client client = clientRepository.findById(panier_id)
+    //            .orElseThrow(() -> new ResourceNotFoundException("Client", "id", client_id));
+    //    Panier panier = panierRepository.getOne(client_id);
+    //    panier.setClient(client);
+    //    client.setPanier(panier);
+    //    panierRepository.save(panier);
+     //   return clientRepository.save(client);
+    //}
+
     // Delete a Client
     @DeleteMapping(value = "/clients/{idClient}")
     public ResponseEntity<?> deleteClient(@ApiParam(value = "Client Id from which client object will delete from database table", required = true)
                                           @PathVariable(value = "id")  Long client_id) {
         Client client = clientRepository.findById(client_id)
                 .orElseThrow(() -> new ResourceNotFoundException("Client", "client_id", client_id));
-
+        //Panier panier = panierRepository.getOne(client_id);
+        //panier.setClient(null);
+        //panierRepository.save(panier);
         clientRepository.delete(client);
-
         return ResponseEntity.ok().build();
     }}
 

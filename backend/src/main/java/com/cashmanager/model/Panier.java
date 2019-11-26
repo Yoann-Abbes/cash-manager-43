@@ -32,7 +32,7 @@ public class Panier implements Serializable {
     private Client client;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "panier",targetEntity = Produit.class)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "panier",targetEntity = Produit.class)
     private Set<Produit> produit = new HashSet<>();
 
     @Value("0")
@@ -53,6 +53,9 @@ public class Panier implements Serializable {
 
     public Set<Produit> getProduit() { return produit;}
     public void setProduit(Set<Produit> produit) { this.produit=produit;}
+    public void removeProduit(Produit produit) {
+        this.produit.remove(produit);
+    }
 
     public Client getClient(){
         return this.client;
