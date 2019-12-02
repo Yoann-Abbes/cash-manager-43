@@ -15,6 +15,8 @@ import java.io.Serializable;
 @ApiModel(description = "All details about the Client. ")
 
 public class Client implements Serializable {
+    public Client () {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The database generated client ID")

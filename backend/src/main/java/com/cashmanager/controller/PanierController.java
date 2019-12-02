@@ -73,18 +73,17 @@ public class PanierController {
     }
 
     //Link Panier to Client
-    //@ApiOperation(value = "Link a Panier to a Client")
-    //@PutMapping(value = "/paniers/{id}/clients/{idClient}")
-    //public Panier linktoClient(@PathVariable (value = "id") Long panier_id,
-     //                          Long idClient){
-      //  Panier panier = panierRepository.findById(panier_id)
-     //           .orElseThrow(() -> new ResourceNotFoundException("Panier", "id", panier_id));
-     //   Client client = clientRepository.getOne(idClient);
-     //   panier.setClient(client);
-      //  client.setPanier(panier);
-       // clientRepository.save(client);
-        //return panierRepository.save(panier);
-    //}
+    @ApiOperation(value = "Link a Panier to a Client")
+    @PutMapping(value = "/paniers/{id}/{idclient}")
+    public Panier linktoClient(@PathVariable (value = "id") Long panier_id,
+                               Long idClient){
+        Panier panier = panierRepository.getOne(panier_id);
+        Client client = clientRepository.getOne(idClient);
+        panier.setClient(client);
+        client.setPanier(panier);
+        clientRepository.save(client);
+        return panierRepository.save(panier);
+    }
 
     @DeleteMapping (value = "/paniers/{id}")
     public ResponseEntity<?> deletePanier(@PathVariable (value = "id") Long id_panier,

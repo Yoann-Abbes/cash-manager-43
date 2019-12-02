@@ -14,6 +14,8 @@ import java.io.Serializable;
 //@JsonIgnoreProperties(allowGetters = true)
 
 public class Paiement implements Serializable {
+    public Paiement() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The database generated paiement ID")
