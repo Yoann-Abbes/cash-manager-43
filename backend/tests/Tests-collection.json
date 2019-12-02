@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e991521a-cf89-408d-8080-9e918a61b8cb",
+		"_postman_id": "a592c26d-9ec6-4a42-9450-b7c1fb9a6817",
 		"name": "cash_manager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -16,20 +16,7 @@
 							"script": {
 								"id": "bbad6781-b9da-48ce-8896-813c3974f876",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check nom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
-									"    ",
-									"});",
-									"",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Bar\");",
-									"    ",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -71,9 +58,7 @@
 							"script": {
 								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
