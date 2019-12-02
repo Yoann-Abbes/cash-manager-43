@@ -3,6 +3,8 @@ package com.cashmanager.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,35 +23,18 @@ public class Paiement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The database generated paiement ID")
-    private int idPaiement;
+    private Long idPaiement;
 
-    //@Column(name = "id_client")
-    @NotBlank
-    @ApiModelProperty(notes = "The Client linked to the Paiement")
-    private int idClient;
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Panier.class)
+    @ApiModelProperty(notes="The panier to which the paiement is linked")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Panier panier;
 
-    //@Column(name = "id_mode_paiement")
-    @NotBlank
-    @ApiModelProperty(notes = "The MdP linked to the Paiement")
-    private int idModePaiement;
+    public Long getId_paiement() { return this.idPaiement; }
 
-    @Column(name = "id_panier")
-    @ApiModelProperty(notes = "The Panier containing the Paiement")
-    private int idPanier;
-
-    public int getId_paiement() { return this.idPaiement; }
-
-    public int getIdClient() { return this.idClient; }
-    public void setIdClient(int idClient) { this.idClient = idClient; }
-
-    public int getIdMdP() {
-        return this.idModePaiement;
-    }
-    public void setIdModePaiement(int idModePaiement) {  this.idModePaiement = idModePaiement; }
-
-    public int getIdPanier() { return this.idPanier; }
-    public void setIdPanier(int idPanier) {
-        this.idPanier = idPanier;
+    public Panier getPanier() { return this.panier; }
+    public void setPanier(Panier panier) {
+        this.panier =  panier;
     }
 
 

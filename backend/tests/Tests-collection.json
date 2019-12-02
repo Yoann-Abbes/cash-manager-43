@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "754024e0-7375-4234-9af3-8edc2f4b54e8",
+		"_postman_id": "e991521a-cf89-408d-8080-9e918a61b8cb",
 		"name": "cash_manager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -8,43 +8,6 @@
 		{
 			"name": "ClientController",
 			"item": [
-				{
-					"name": "Get all Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/clients",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Create a Client",
 					"event": [
@@ -84,7 +47,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Bar\",\n\t\"nom\": \"Foo\"\n}"
+							"raw": "{\n\t\"prenom\": \"Babr\",\n\t\"nom\": \"Foo\",\n\t\"email\":\"email@email.fr\",\n\t\"login\":\"jean\",\n\t\"mdp\":\"bonjour\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/clients",
@@ -96,6 +59,101 @@
 							"path": [
 								"clients"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostClient2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"prenom\": \"Marie\",\n\t\"nom\": \"Chris\",\n\t\"email\":\"email2@email.fr\",\n\t\"login\":\"jean2\",\n\t\"mdp\":\"bonjour\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostClient3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []
@@ -170,10 +228,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Booba\"\n}"
+							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/clients/1",
+							"raw": "http://localhost:8080/clients/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -181,7 +239,7 @@
 							"port": "8080",
 							"path": [
 								"clients",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -215,10 +273,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8080/clients/1",
 							"protocol": "http",
@@ -234,7 +288,510 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PanierController",
+			"item": [
+				{
+					"name": "PostPanier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clients/1/paniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"1",
+								"paniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPanier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostPanier2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/clients/2/paniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"2",
+								"paniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paniers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePanier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paniers/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ProduitController",
+			"item": [
+				{
+					"name": "PostProduit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProduit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produits",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostProduit2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Samsung\",\n\t\"prix\":950\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produits",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"iphone\",\n\t\"prix\":1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produits",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutProduit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"iphone\",\n\t\"prix\":900\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produits/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduit",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produits/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ContenuPanierController",
+			"item": [
+				{
+					"name": "PostContenu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paniers/1/produits/1/contenupaniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"produits",
+								"1",
+								"contenupaniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContenuById",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clients/1/paniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"1",
+								"paniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByPanierId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContenu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutContenu",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"quantite\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paniers/1/contenupaniers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"contenupaniers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteContenu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PaiementController",
+			"item": [
+				{
+					"name": "GetPaiement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paiements/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostPaiement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePaiement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paiements/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

@@ -1,8 +1,10 @@
 package com.cashmanager.controller;
 
 import com.cashmanager.model.Paiement;
+import com.cashmanager.model.Panier;
 import com.cashmanager.repository.PaiementRepository;
 import com.cashmanager.exception.ResourceNotFoundException;
+import com.cashmanager.repository.PanierRepository;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ import java.util.List;
 public class PaiementController {
     @Autowired
     private PaiementRepository paiementRepository;
+    @Autowired
+    private PanierRepository panierRepository;
 
 
 
@@ -33,14 +37,6 @@ public class PaiementController {
         return paiementRepository.findAll();
     }
 
-    //Create a new Paiement
-    @PostMapping(value = "/paiements")
-    @ApiOperation(value = "add a Paiement")
-    public Paiement createPaiement(@Valid @RequestBody Paiement paiement) {
-        return paiementRepository.save(paiement);
-    }
-
-
     // Get a single paiement
     @ApiOperation(value = "Get a paiement by id")
     @GetMapping(value = "/paiements/{idPaiement}")
@@ -49,19 +45,31 @@ public class PaiementController {
                 .orElseThrow(() ->new ResourceNotFoundException("Paiement", "idPaiement", idPaiement)) ;
     }
 
-    // Update a Paiement
-    @ApiOperation(value = "Update a paiement")
-    @PutMapping(value = "/paiements/{idPaiement}")
-    public Paiement updatePaiement(@ApiParam(value = "Id of the employee to update", required = true)@PathVariable Long idPaiement,
-                                 @Valid @RequestBody Paiement paiementDetails) {
-        Paiement paiement = paiementRepository.findById(idPaiement)
-                .orElseThrow(() -> new ResourceNotFoundException("idPaiement", "idPaiement", idPaiement));
-        paiement.setIdClient(paiementDetails.getIdClient());
-        paiement.setIdModePaiement(paiementDetails.getIdMdP());
-        paiement.setIdPanier(paiementDetails.getIdPanier());
-        Paiement updatedPaiement = paiementRepository.save(paiement);
-        return updatedPaiement;
+    //Create a new Paiement
+    @PostMapping(value = "/paniers/{panier_id}/paiements")
+    @ApiOperation(value = "add a Paiement")
+    public Paiement createPaiement(@Valid @RequestBody Paiement paiement,
+                                   @PathVariable (value = "panier_id") Long panier_id) {
+        Panier panier = panierRepository.findById(panier_id)
+                .orElseThrow(() ->new ResourceNotFoundException("Panier","panier_id",panier_id));
+        paiement.setPanier(panier);
+        panierRepository.save(panier);
+        return paiementRepository.save(paiement);
     }
+
+
+
+    // Update a Paiement
+    //@ApiOperation(value = "Update a paiement")
+    //@PutMapping(value = "/paiements/{idPaiement}")
+    //public Paiement updatePaiement(@ApiParam(value = "Id of the employee to update", required = true)@PathVariable Long idPaiement,
+    //                             @Valid @RequestBody Paiement paiementDetails) {
+   //     Paiement paiement = paiementRepository.findById(idPaiement)
+    //            .orElseThrow(() -> new ResourceNotFoundException("idPaiement", "idPaiement", idPaiement));
+     //   paiement.setPanier(paiementDetails.getPanier());
+      //  Paiement updatedPaiement = paiementRepository.save(paiement);
+      //  return updatedPaiement;
+    //}
 
     @ApiOperation(value = "Deleting a paiement by its id")
     @DeleteMapping (value = "/paiements/{idPaiement}")
