@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
-    Page<Produit> findByPanierId(Long idPanier, Pageable pageable);
+    //Page<Produit> findByPanierId(Long idPanier, Pageable pageable);
 }

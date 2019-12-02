@@ -63,6 +63,7 @@ public class PaiementController {
         return updatedPaiement;
     }
 
+    @ApiOperation(value = "Deleting a paiement by its id")
     @DeleteMapping (value = "/paiements/{idPaiement}")
     public ResponseEntity<?> deletePaiement(@ApiParam(value = "Paiement Id from which paiement object will deleted from the database", required = true)@PathVariable Long idPaiement) {
         Paiement paiement = paiementRepository.findById(idPaiement)

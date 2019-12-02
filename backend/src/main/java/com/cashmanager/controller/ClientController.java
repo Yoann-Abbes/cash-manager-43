@@ -31,13 +31,6 @@ public class ClientController {
         return clientRepository.findAll();
     }
 
-    // Create a new Clients
-    @PostMapping("/clients")
-    @ApiOperation(value = "Add an client")
-    public Client createClient(@Valid @RequestBody Client client) {
-        return clientRepository.save(client);
-    }
-
     // Get a Single Client by id
     @ApiOperation(value = "Get an Client by Id")
     @GetMapping(value = "/clients/{idClient}")
@@ -46,6 +39,12 @@ public class ClientController {
                 .orElseThrow(() -> new ResourceNotFoundException("Client", "idClient", idClient));
     }
 
+    // Create a new Client
+    @PostMapping("/clients")
+    @ApiOperation(value = "Add an client")
+    public Client createClient(@Valid @RequestBody Client client) {
+        return clientRepository.save(client);
+    }
 
     // Update a Client
     @ApiOperation(value = "Update a client")

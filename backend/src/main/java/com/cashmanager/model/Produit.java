@@ -4,6 +4,8 @@ package com.cashmanager.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
@@ -16,28 +18,27 @@ import java.io.Serializable;
 import java.sql.Blob;
 
 @Entity
-@Table(name = "produit")
-@JsonIgnoreProperties(allowGetters = true)
 
+@Table(name = "produit")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@ApiModel(description = "All details about a produit ")
 public class Produit implements Serializable {
 
     public Produit() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "Database generated Produit id")
     private Long id;
 
     @Column
     @NotBlank
+    @ApiModelProperty(notes = "name of the produit")
     private String name;
 
     @NotNull
+    @ApiModelProperty(notes = "Produits's price")
     private double prix;
-
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "panier_id")
-    private Panier panier;
 
     public Long getId() { return this.id; }
 
@@ -51,6 +52,4 @@ public class Produit implements Serializable {
         this.name = name;
     }
 
-    public Panier getPanier(){return this.panier;}
-    public void setPanier(Panier panier) { this.panier=panier;}
 }

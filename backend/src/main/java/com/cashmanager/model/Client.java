@@ -46,11 +46,6 @@ public class Client implements Serializable {
     @ApiModelProperty(notes = "The client first name")
     private String prenom;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "panier_id", referencedColumnName = "id")
-    @ApiModelProperty(notes="The client owning the Panier")
-    private Panier panier;
-
 
     public Long getId() { return this.id; }
 
@@ -76,7 +71,4 @@ public class Client implements Serializable {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-
-    public Panier getPanier() { return this.panier;}
-    public void setPanier(Panier panier) { this.panier=panier;}
 }

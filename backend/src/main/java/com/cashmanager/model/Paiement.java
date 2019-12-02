@@ -1,6 +1,7 @@
 package com.cashmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Table(name = "paiement")
 @JavaBean
 //@JsonIgnoreProperties(allowGetters = true)
+@ApiModel(description="All details about the Paiement")
 
 public class Paiement implements Serializable {
     public Paiement() {}
