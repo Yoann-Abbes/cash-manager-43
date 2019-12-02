@@ -18,10 +18,6 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -204,12 +200,12 @@
 									"});",
 									"pm.test(\"Check name\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Morgan\");",
+									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
 									"});",
 									"",
 									"pm.test(\"Check prenom\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Freeman\");",
+									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -224,7 +220,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/clients/2",
+							"raw": "http://localhost:8080/clients/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -232,7 +228,7 @@
 							"port": "8080",
 							"path": [
 								"clients",
-								"2"
+								"1"
 							]
 						}
 					},
