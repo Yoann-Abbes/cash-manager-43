@@ -411,7 +411,14 @@
 							}
 						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/produits",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produits"
+							]
 						}
 					},
 					"response": []
