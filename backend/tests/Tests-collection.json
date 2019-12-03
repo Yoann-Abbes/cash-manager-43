@@ -1430,7 +1430,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "{\n\t\"mode_paiement\":\"carte bleue\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
