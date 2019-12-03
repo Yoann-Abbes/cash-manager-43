@@ -3,10 +3,8 @@
 main() {
     docker-compose up -d
 
-    until curl --output /dev/null --silent --fail -d -H "Content-Type: application/json" -X GET http://localhost:8080/clients; do
- printf 'Waiting ...'
- sleep 5
-done
+ sleep 30
+
     npm install -g newman
     newman run ./tests/Tests-collection.json --timeout 18000000 --timeout-request 18000000 --timeout-script 18000000 --bail
     status=$?
