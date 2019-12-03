@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CashManager.iml" filepath="$PROJECT_DIR$/CashManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend-CashManager.iml" filepath="$PROJECT_DIR$/frontend-CashManager.iml" />
     </modules>
   </component>
 </project>
