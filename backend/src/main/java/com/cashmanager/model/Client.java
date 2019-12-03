@@ -10,7 +10,7 @@ import java.beans.JavaBean;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Client")
+@Table(name = "clients")
 @JavaBean
 @ApiModel(description = "All details about the Client. ")
 

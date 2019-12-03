@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a592c26d-9ec6-4a42-9450-b7c1fb9a6817",
+		"_postman_id": "da14d621-b1cc-4bf7-9aae-d6bde9d9f920",
 		"name": "cash_manager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -80,43 +80,6 @@
 					"response": []
 				},
 				{
-					"name": "Get all Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(1);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/clients",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "PostClient2",
 					"event": [
 						{
@@ -140,7 +103,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email2@email.fr\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
@@ -204,7 +167,7 @@
 									"});",
 									"pm.test(\"Check nom\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Clairen\");",
+									"    pm.expect(jsonData.nom).to.eql(\"Cleairen\");",
 									"    ",
 									"});",
 									"",
@@ -215,7 +178,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email@email.com\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
@@ -247,6 +210,43 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Get all clients\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(3);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "http://localhost:8080/clients",
 							"protocol": "http",
@@ -312,7 +312,7 @@
 									"});",
 									"pm.test(\"Check nom\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Clairen\");",
+									"    pm.expect(jsonData.nom).to.eql(\"Cleairen\");",
 									"    ",
 									"});",
 									"",
@@ -321,27 +321,22 @@
 									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
 									"    ",
 									"});",
-									"pm.test(\"Check email\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
-									"    ",
-									"});",
-									"pm.test(\"Check mdp\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.mdp).to.eql(\"mdp\");",
-									"    ",
-									"});",
-									"pm.test(\"Check login\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.login).to.eql(\"jeanbooba\");",
-									"    ",
-									"});",
 									"",
-									"pm.test(\"Check login\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.login).to.eql(\"jeanbooba\");",
+									"// pm.test(\"Check email\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.email).to.eql(\"email@email.com\");",
 									"    ",
-									"});"
+									"// });",
+									"// pm.test(\"Check mdp\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.mdp).to.eql(\"mdp\");",
+									"    ",
+									"// });",
+									"// pm.test(\"Check login\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.login).to.eql(\"jeanbooba\");",
+									"    ",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -444,7 +439,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "{\n\t\"quantite\": 3,\n\t\"total\": 190,\n\t\"client_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -460,42 +455,6 @@
 							"path": [
 								"clients",
 								"1",
-								"paniers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetPanier",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a93806e3-86c6-4db8-b56f-c5ad9f1c5349",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(1);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/paniers",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
 								"paniers"
 							]
 						}
@@ -520,7 +479,23 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"quantite\": 10,\n\t\"total\": 110,\n\t\"client_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/clients/2/paniers",
 							"host": [
@@ -530,6 +505,42 @@
 							"path": [
 								"clients",
 								"2",
+								"paniers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPanier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a93806e3-86c6-4db8-b56f-c5ad9f1c5349",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Get all panier\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
 								"paniers"
 							]
 						}
@@ -547,10 +558,11 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(2);",
-									"});"
+									"",
+									"// pm.test(\"GetById\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.client_id).to.eql(1);",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -988,8 +1000,11 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -1000,7 +1015,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1331,10 +1346,10 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(1);",
-									"});"
+									"// pm.test(\"Your test name\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.length).to.eql(1);",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -1416,6 +1431,56 @@
 			"name": "ModePaiementController",
 			"item": [
 				{
+					"name": "PostWithPaiementId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e12c5729-f12d-4384-aeab-8a6908bff458",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paiements/1/modepaiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements",
+								"1",
+								"modepaiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GetModePaiement",
 					"event": [
 						{
@@ -1475,56 +1540,6 @@
 							"path": [
 								"modepaiements",
 								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PostWithPaiementId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e12c5729-f12d-4384-aeab-8a6908bff458",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/paiements/1/modepaiements",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"paiements",
-								"1",
-								"modepaiements"
 							]
 						}
 					},
