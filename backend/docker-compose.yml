@@ -1,23 +1,15 @@
-version: '3'
+version: '2.1'
 services:
   cash_manager:
     container_name: cash_manager
-    image: maven:3.5-jdk-9
+    image: yabbes/cash-manager:latest
     restart: always
     ports:
       - "8080:8080"
     depends_on:
-      - "mysqldb"
-    volumes:
-      - .:/app
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/cash_manager
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: cashmanager
-    expose:
-      - "8080"
+        mysqldb:
+          condition: "service_healthy"
     working_dir: /app
-    command: mvn clean spring-boot:run
 
   mysqldb:
     container_name: mysqldb
@@ -28,7 +20,13 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=cashmanager
-      - MYSQL_DATABASE=cash_manager
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
     volumes:
+      - ./mysql:/etc/mysql/conf.d
       - ./mysql-dump:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=cashmanager --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 20
