@@ -1289,10 +1289,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.length).to.eql(1);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
