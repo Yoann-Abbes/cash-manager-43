@@ -262,44 +262,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete a Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/clients/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clients",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Update a Client",
 					"event": [
 						{
@@ -360,6 +322,44 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email3@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "http://localhost:8080/clients/3",
