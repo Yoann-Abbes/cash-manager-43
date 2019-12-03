@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class Login : AppCompatActivity() {
-    private val client = OkHttpClient()
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
