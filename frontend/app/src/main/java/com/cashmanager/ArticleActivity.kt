@@ -17,17 +17,20 @@ class ArticleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_article)
 
         button.setOnClickListener {
-            val message: String = textInputEditText.text.toString()
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+           // val message: String = textInputEditText.text.toString()
+          //  Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, PanierActivity ::class.java)
             startActivity(intent)
         }
 
-        fun AddButtonRouge(button:View){
-            Log.i("effect","effect")
-            textInputEditText2.text = textInputEditText.text
-        }
+
+
+
+     //   fun AddButtonRouge(button:View){
+       //     Log.i("effect","effect")
+         //   textInputEditText2.text = textInputEditText.text
+      //  }
 
 
     }

@@ -17,8 +17,8 @@ class PanierActivity : AppCompatActivity() {
             val intent = Intent(this, PaiementActivity ::class.java)
             startActivity(intent)
 
-
     }
+
     }
 
 }

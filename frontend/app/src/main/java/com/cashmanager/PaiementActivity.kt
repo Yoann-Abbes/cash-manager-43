@@ -19,5 +19,7 @@ class PaiementActivity : AppCompatActivity() {
             val intent = Intent(this, PaiementchequeActivity ::class.java)
             startActivity(intent)
         }
+
+
 }
 }
