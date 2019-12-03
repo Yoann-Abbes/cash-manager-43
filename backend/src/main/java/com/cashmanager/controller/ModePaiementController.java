@@ -51,13 +51,9 @@ public class ModePaiementController {
     }
 
     // create a new payment mode
-    @PostMapping(value = "/paiements/{paiement_id}/modepaiements")
+    @PostMapping(value = "/modepaiements")
     @ApiOperation(value = "Add a new payment mode")
-    public ModePaiement createPaymentMode(@Valid @RequestBody ModePaiement modePaiement,
-                                          @PathVariable (value = "paiement_id") Long paiement_id) {
-        Paiement paiement = paiementRepository.findById(paiement_id)
-                .orElseThrow(() -> new ResourceNotFoundException("Paiement","paiement_id", paiement_id));
-        modePaiement.setPaiement(paiement);
+    public ModePaiement createPaymentMode(@Valid @RequestBody ModePaiement modePaiement) {
         return modePaiementRepository.save(modePaiement);
     }
 
@@ -70,6 +66,7 @@ public class ModePaiementController {
                 .orElseThrow(() -> new ResourceNotFoundException("ModePaiement", "id", id));
 
         modePaiement.setPaymentMode(modePaiementDetails.getPaymentMode());
+        modePaiement.setPaiement(modePaiementDetails.getPaiement());
         ModePaiement updatedPaymentMode = modePaiementRepository.save(modePaiement);
         return updatedPaymentMode;
     }
