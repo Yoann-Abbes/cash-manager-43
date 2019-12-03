@@ -1403,6 +1403,56 @@
 					"response": []
 				},
 				{
+					"name": "PostMdp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09e6a0e2-56dc-41de-a153-b20ecedd3faa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paiements/1/modepaiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements",
+								"1",
+								"modepaiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GetById",
 					"event": [
 						{
