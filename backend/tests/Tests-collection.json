@@ -215,7 +215,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email3@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email3@email.com\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
