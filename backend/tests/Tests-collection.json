@@ -980,55 +980,6 @@
 					"response": []
 				},
 				{
-					"name": "GetContenuById",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "993fae51-39d8-4080-aaee-d9a4dcf65df2",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/contenupaniers/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"contenupaniers",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "GetByPanierId",
 					"event": [
 						{
