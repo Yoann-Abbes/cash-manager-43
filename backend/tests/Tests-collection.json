@@ -240,7 +240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email3@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}",
+							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email3@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Clairen\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
