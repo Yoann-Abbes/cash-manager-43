@@ -28,5 +28,5 @@ services:
     healthcheck:
       test: "/usr/bin/mysql --user=root --password=cashmanager --execute \"SHOW DATABASES;\""
       interval: 2s
-      timeout: 20s
+      timeout: 40s
       retries: 20

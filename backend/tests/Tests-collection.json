@@ -388,9 +388,28 @@
 			"item": [
 				{
 					"name": "PostProduit",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"galaxy\",\n\t\"prix\":700\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": ""
 						}
@@ -463,7 +482,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"iphone\",\n\t\"prix\":1000\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -471,13 +490,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/produits",
+							"raw": "localhost:8080/produits/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"produits"
+								"produits",
+								"1"
 							]
 						}
 					},
@@ -587,15 +607,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/clients/1/paniers",
+							"raw": "localhost:8080/contenupaniers/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"clients",
-								"1",
-								"paniers"
+								"contenupaniers",
+								"1"
 							]
 						}
 					},
@@ -607,7 +626,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/paniers/1/contenupaniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"contenupaniers"
+							]
 						}
 					},
 					"response": []
@@ -618,7 +646,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/contenupaniers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenupaniers"
+							]
 						}
 					},
 					"response": []
@@ -666,7 +701,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/paniers/1/contenupaniers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"contenupaniers",
+								"1"
+							]
 						}
 					},
 					"response": []
@@ -712,7 +757,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -735,11 +780,39 @@
 				},
 				{
 					"name": "PostPaiement",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/paniers/1/paiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"paiements"
+							]
 						}
 					},
 					"response": []
