@@ -159,9 +159,7 @@
 							"script": {
 								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -197,13 +195,7 @@
 							"script": {
 								"id": "235cd3ee-a9d0-40ad-8c62-288262a6236a",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
