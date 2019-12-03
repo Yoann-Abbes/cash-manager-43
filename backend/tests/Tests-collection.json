@@ -238,18 +238,7 @@
 							"script": {
 								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Check name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
-									"});",
-									"",
-									"pm.test(\"Check prenom\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
