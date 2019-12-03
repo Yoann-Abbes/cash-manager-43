@@ -140,7 +140,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email2@email.fr\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
@@ -215,7 +215,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email3@email.fr\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
@@ -240,7 +240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}",
+							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email3@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -323,7 +323,7 @@
 									"});",
 									"pm.test(\"Check email\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    pm.expect(jsonData.email).to.eql(\"email3@email.fr\");",
 									"    ",
 									"});",
 									"pm.test(\"Check mdp\", function () {",
@@ -359,10 +359,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}"
+							"raw": "{\n\t\"prenom\": \"Booba\",\n\t\"email\":\"email3@email.com\",\n\t\"mdp\":\"mdp\",\n\t\"login\":\"jeanbooba\",\n\t\"nom\":\"Cleairen\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/clients/2",
+							"raw": "http://localhost:8080/clients/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -370,7 +370,7 @@
 							"port": "8080",
 							"path": [
 								"clients",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -520,7 +520,23 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/clients/2/paniers",
 							"host": [
