@@ -1438,12 +1438,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/modepaiements",
+							"raw": "localhost:8080/paiements/1/modepaiements",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"paiements",
+								"1",
 								"modepaiements"
 							]
 						}
@@ -1469,55 +1471,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "localhost:8080/modepaiements/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"modepaiements",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ModifMDP",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "97ece1b0-a469-4f5a-9688-e53dac7be23f",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"mode_paiement\":\"carte bleue\",\n\t\"paiement\": {\n\t\t\"id\":1\n\t}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "localhost:8080/modepaiements/1",
 							"host": [
