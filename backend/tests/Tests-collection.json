@@ -16,7 +16,36 @@
 							"script": {
 								"id": "bbad6781-b9da-48ce-8896-813c3974f876",
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check nom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Foo\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Babr\");",
+									"    ",
+									"});",
+									"pm.test(\"Check email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    ",
+									"});",
+									"pm.test(\"Check mdp\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mdp).to.eql(\"bonjour\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check login\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.login).to.eql(\"jean\");",
+									"    ",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -58,7 +87,13 @@
 							"script": {
 								"id": "4f276a50-bcbb-476b-b578-efb2b957846a",
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -83,6 +118,46 @@
 				},
 				{
 					"name": "PostClient2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1de0e22b-9882-472c-8902-5cd13ed2e478",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check nom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Chris\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Marie\");",
+									"    ",
+									"});",
+									"pm.test(\"Check email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    ",
+									"});",
+									"pm.test(\"Check mdp\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mdp).to.eql(\"bonjour\");",
+									"    ",
+									"});",
+									"pm.test(\"Check login\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.login).to.eql(\"jean2\");",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -118,6 +193,41 @@
 				},
 				{
 					"name": "PostClient3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "039c778d-5aa4-45c5-ab5d-f953f87edc2a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check nom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Clairen\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
+									"    ",
+									"});",
+									"pm.test(\"Check email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    ",
+									"});",
+									"pm.test(\"Check mdp\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mdp).to.eql(\"mdp\");",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -159,7 +269,9 @@
 							"script": {
 								"id": "c5ba496a-d47d-4b36-8e2b-e53803680f8b",
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -195,7 +307,41 @@
 							"script": {
 								"id": "235cd3ee-a9d0-40ad-8c62-288262a6236a",
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check nom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.nom).to.eql(\"Clairen\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prenom).to.eql(\"Booba\");",
+									"    ",
+									"});",
+									"pm.test(\"Check email\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"email@email.fr\");",
+									"    ",
+									"});",
+									"pm.test(\"Check mdp\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mdp).to.eql(\"mdp\");",
+									"    ",
+									"});",
+									"pm.test(\"Check login\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.login).to.eql(\"jeanbooba\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check login\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.login).to.eql(\"jeanbooba\");",
+									"    ",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -238,7 +384,9 @@
 							"script": {
 								"id": "eb8e8eaa-55d7-4c4b-9ae0-faeeae56df6e",
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -270,6 +418,20 @@
 			"item": [
 				{
 					"name": "PostPanier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "af061472-eb13-44ab-b9ae-54e67dfa23e4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -306,6 +468,24 @@
 				},
 				{
 					"name": "GetPanier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a93806e3-86c6-4db8-b56f-c5ad9f1c5349",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -324,6 +504,20 @@
 				},
 				{
 					"name": "PostPanier2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0eb5d1e0-34fc-460a-876b-5b1200e32d09",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -344,6 +538,24 @@
 				},
 				{
 					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ebd8057-07b5-4650-8115-a4ae1ae17d82",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -363,6 +575,20 @@
 				},
 				{
 					"name": "DeletePanier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49186317-3585-4bd9-88ca-19332ffaf2a6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -388,11 +614,33 @@
 			"item": [
 				{
 					"name": "PostProduit",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1626661-53f8-4a4c-b32e-4b72bd8ddff6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"galaxy\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prix).to.eql(700);",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -425,6 +673,24 @@
 				},
 				{
 					"name": "GetProduit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab103ba8-b9c5-483b-97cf-0254efb23299",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -443,6 +709,31 @@
 				},
 				{
 					"name": "PostProduit2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0e67737-8d60-4504-b52c-f7f111583d7c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Samsung\");",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Check prenom\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prix).to.eql(950);",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -477,8 +768,25 @@
 				},
 				{
 					"name": "GetByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "368b82d0-8359-44d3-9a2e-190be5fb330c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -512,6 +820,28 @@
 				},
 				{
 					"name": "PutProduit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "619d3aa0-e101-4fb3-9895-87e843fc4557",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"iphone\");",
+									"});",
+									"pm.test(\"Check price\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.prix).to.eql(900);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -547,6 +877,20 @@
 				},
 				{
 					"name": "DeleteProduit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "18d5170f-a668-47a8-98f3-5910c7244876",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -572,9 +916,45 @@
 			"item": [
 				{
 					"name": "PostContenu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "adf1064f-b997-4023-96be-adf60dff6550",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check quantite\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.quantite).to.eql(2);",
+									"    ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"quantite\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/paniers/1/produits/1/contenupaniers",
 							"host": [
@@ -594,6 +974,20 @@
 				},
 				{
 					"name": "GetContenuById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "993fae51-39d8-4080-aaee-d9a4dcf65df2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -629,6 +1023,20 @@
 				},
 				{
 					"name": "GetByPanierId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0a4731d-07c3-4b3c-a90a-c0dc5485fe45",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -649,6 +1057,20 @@
 				},
 				{
 					"name": "GetContenu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d15a92e6-8d10-4a1b-aaa5-ffbe1234355e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -667,6 +1089,25 @@
 				},
 				{
 					"name": "PutContenu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a8c9092-7c18-4240-acf7-49fcf9034d93",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Check quantite\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.quantite).to.eql(1);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -704,8 +1145,22 @@
 				},
 				{
 					"name": "DeleteContenu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e37dee23-3d82-44f6-a3c6-64cc11affb5a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
 							"raw": "localhost:8080/paniers/1/contenupaniers/1",
@@ -730,7 +1185,125 @@
 			"name": "PaiementController",
 			"item": [
 				{
+					"name": "PostPaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9157b91c-fd92-4dc3-a1a6-18d377d2a907",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paniers/1/paiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"paiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostPaiement2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebd459e1-2bbd-43c8-b201-947f68634b11",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/paniers/1/paiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paniers",
+								"1",
+								"paiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GetPaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74d370ee-48a7-48a6-bc06-0ed4d9ff557d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -749,6 +1322,24 @@
 				},
 				{
 					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0813d73a-8733-43cd-bfa4-de8da08cdc62",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -786,12 +1377,127 @@
 					"response": []
 				},
 				{
-					"name": "PostPaiement",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
+					"name": "DeletePaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "921f789e-1ed8-47f2-8c94-776580f2cdb0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/paiements/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paiements",
+								"2"
+							]
+						}
 					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ModePaiementController",
+			"item": [
+				{
+					"name": "GetModePaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d60e6e6a-4b57-4cdc-8f5b-193806d6cb0a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modepaiements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modepaiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a9cbcfe-cccb-41a3-8fd6-a786cf4a2d09",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modepaiements/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modepaiements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostWithPaiementId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e12c5729-f12d-4384-aeab-8a6908bff458",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -802,7 +1508,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n}",
+							"raw": "{}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -810,15 +1516,64 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/paniers/1/paiements",
+							"raw": "localhost:8080/paiements/1/modepaiements",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"paniers",
+								"paiements",
 								"1",
-								"paiements"
+								"modepaiements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutPaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b19a7f1e-58c2-41c8-8bcd-a3df9752c211",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/modepaiements/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modepaiements",
+								"1"
 							]
 						}
 					},
@@ -826,17 +1581,31 @@
 				},
 				{
 					"name": "DeletePaiement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78b90201-84ac-4a1c-9e9e-2e07733ab1dc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/paiements/1",
+							"raw": "localhost:8080/modepaiements/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"paiements",
+								"modepaiements",
 								"1"
 							]
 						}
