@@ -9,7 +9,11 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class Login : AppCompatActivity() {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> touriaOud
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
