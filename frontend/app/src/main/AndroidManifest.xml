@@ -14,8 +14,8 @@
         <activity android:name=".PaiementchequeActivity" />
         <activity android:name=".PaiementActivity" />
         <activity android:name=".PanierActivity" />
-        <activity android:name=".ArticleActivity" />
-        <activity android:name=".Login" >
+        <activity android:name=".Login" />
+        <activity android:name=".ArticleActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
