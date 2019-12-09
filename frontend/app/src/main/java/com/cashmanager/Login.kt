@@ -6,14 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import khttp.get
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_article.*
 
 
 class Login : AppCompatActivity() {
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> touriaOud
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +23,7 @@ class Login : AppCompatActivity() {
             //  Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
      //   val r = get("https://api.github.com/events")
       //  print(r)
-        val intent = Intent(this, ArticleActivity ::class.java)
+        val intent = Intent(this, MainActivity ::class.java)
             startActivity(intent)
         }
 
