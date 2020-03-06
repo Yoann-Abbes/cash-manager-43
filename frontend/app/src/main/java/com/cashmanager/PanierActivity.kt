@@ -1,24 +1,24 @@
 package com.cashmanager
 
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_panier.*
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class PanierActivity : AppCompatActivity() {
 
+    private var tv: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_panier)
+        setContentView(R.layout.activity_next)
 
-        button5.setOnClickListener {
+        tv = findViewById(R.id.tv) as TextView
 
-            val intent = Intent(this, PaiementActivity ::class.java)
-            startActivity(intent)
-
-
-    }
+        for (i in 0..4) {
+            val text = tv!!.text.toString()
+            tv!!.text = text + MainActivity.modelArrayList.get(i).getFruits() + " -> " + MainActivity.modelArrayList.get(i).getNumbers() + "\n"
+        }
     }
 
 }

@@ -1,36 +1,53 @@
 package com.cashmanager
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+//import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_article.*
-
+import android.widget.Button
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import java.util.ArrayList
 
 class ArticleActivity : AppCompatActivity() {
 
-    var array = arrayOf("Iphone 8", "Sumsung 8", "Sumsung 8Plus", "Iphone 11")
+    private var lv: ListView? = null
+    private var customAdapter: CustomAdapter? = null
+    private var btnnext: Button? = null
+    private val fruitlist = arrayOf("Citron ", "Oranges", "Cerises", "Pomme", "kiwi","Banane")
+
+    private val model: ArrayList<Model>
+        get() {
+            val list = ArrayList<Model>()
+            for (i in 0..4) {
+
+                val model = Model()
+                model.setNumbers(1)
+                model.setFruits(fruitlist[i])
+                list.add(model)
+            }
+            return list
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_article)
+        setContentView(R.layout.activity_main)
 
-        button.setOnClickListener {
-            val message: String = textInputEditText.text.toString()
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        lv = findViewById(R.id.lv) as ListView
+        btnnext = findViewById(R.id.next) as Button
 
-            val intent = Intent(this, PanierActivity ::class.java)
+        modelArrayList = model
+        customAdapter = CustomAdapter(this)
+        lv!!.adapter = customAdapter
+
+        btnnext!!.setOnClickListener {
+            val intent = Intent(this@ArticleActivity, NextActivity::class.java)
             startActivity(intent)
         }
-
-        fun AddButtonRouge(button:View){
-            Log.i("effect","effect")
-            textInputEditText2.text = textInputEditText.text
-        }
-
-
     }
 
+    companion object {
+        lateinit var modelArrayList: ArrayList<Model>
+    }
 
 }
